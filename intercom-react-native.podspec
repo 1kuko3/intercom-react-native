@@ -17,6 +17,11 @@ Pod::Spec.new do |s|
   s.source_files = "ios/**/*.{h,m,mm}"
   s.resource_bundles = { 'IntercomFramework' => ['ios/assets/*'] }
 
+  s.pod_target_xcconfig = {
+    "DEFINES_MODULE" => "YES",
+    "SWIFT_OBJC_BRIDGING_HEADER" => "${PODS_ROOT}/intercom-react-native/ios/Intercom-Bridging-Header.h"
+  }
+
   s.pod_target_xcconfig = { "DEFINES_MODULE" => "YES" }
 
   s.dependency "React-Core"
