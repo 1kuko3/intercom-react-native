@@ -159,7 +159,16 @@ const withBridgingHeader: ConfigPlugin<IntercomPluginProps> = (_config) => {
 #import <IntercomModule.h>
 `;
 
-    config.modResults.contents = bridgingHeaderContent;
+    // Create or update the bridging header file
+    const fs = require('fs');
+    fs.writeFileSync(bridgingHeaderPath, bridgingHeaderContent);
+
+    // Update the project settings to use the bridging header
+    const xcodeProject = require('@expo/config-plugins/build/ios/Xcodeproj');
+    const project = xcodeProject.getProject(config.modRequest.projectRoot);
+    const target = project.getTarget(config.modRequest.projectName);
+    target.setBuildSetting('SWIFT_OBJC_BRIDGING_HEADER', bridgingHeaderPath);
+
     return config;
   });
 
