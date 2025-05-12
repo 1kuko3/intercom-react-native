@@ -33,6 +33,7 @@
 		3A657CFB9FBFC5F094B4D20D /* IntercomEventEmitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntercomEventEmitter.m; sourceTree = "<group>"; };
 		7DAD57BF2683B5B5001B040A /* IntercomHelpCenterHelpers.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntercomHelpCenterHelpers.m; sourceTree = "<group>"; };
 		7DAD57C22683B5F0001B040A /* IntercomHelpCenterHelpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntercomHelpCenterHelpers.h; sourceTree = "<group>"; };
+		965DC72D2DD22302008A7075 /* Intercom-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Intercom-Bridging-Header.h"; sourceTree = "<group>"; };
 		B3E7B5881CC2AC0600A0062D /* IntercomModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntercomModule.h; sourceTree = "<group>"; };
 		B3E7B5891CC2AC0600A0062D /* IntercomModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntercomModule.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -69,6 +70,7 @@
 				3A6571CFBA81C1981AA5CA35 /* IntercomAttributesBuilder.h */,
 				3A657CFB9FBFC5F094B4D20D /* IntercomEventEmitter.m */,
 				3A65761B82D336291D470582 /* IntercomEventEmitter.h */,
+				965DC72D2DD22302008A7075 /* Intercom-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -269,6 +271,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../../../React/**",
 					"$(SRCROOT)/../../react-native/React/**",
+					"$(SRCROOT)/ios/Intercom-Bridging-Header.h",
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
@@ -285,6 +288,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../../../React/**",
 					"$(SRCROOT)/../../react-native/React/**",
+					"$(SRCROOT)/ios/Intercom-Bridging-Header.h",
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
