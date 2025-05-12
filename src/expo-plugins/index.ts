@@ -100,7 +100,7 @@ const appDelegate: ConfigPlugin<IntercomPluginProps> = (_config, props) =>
     stringContents = isSwift
       ? mergeContents({
           src: stringContents,
-          newSrc: 'import intercom_react_native.IntercomModule',
+          newSrc: 'import Intercom',
           comment: '//',
           tag: 'Intercom header',
           anchor: /import Expo/,
@@ -149,8 +149,27 @@ const infoPlist: ConfigPlugin<IntercomPluginProps> = (
   return newConfig;
 };
 
+const withBridgingHeader: ConfigPlugin<IntercomPluginProps> = (_config) => {
+  const newConfig = withAppDelegate(_config, (config) => {
+    const bridgingHeaderPath = `${config.modRequest.projectRoot}/ios/${config.modRequest.projectName}-Bridging-Header.h`;
+    const bridgingHeaderContent = `//
+//  Use this file to import your target's public headers that you would like to expose to Swift.
+//
+
+#import <IntercomModule.h>
+`;
+
+    config.modResults.contents = bridgingHeaderContent;
+    return config;
+  });
+
+  return newConfig;
+};
+
 const withIntercomIOS: ConfigPlugin<IntercomPluginProps> = (config, props) => {
-  let newConfig = appDelegate(config, props);
+  let newConfig = config;
+  newConfig = withBridgingHeader(newConfig, props);
+  newConfig = appDelegate(newConfig, props);
   newConfig = infoPlist(newConfig, props);
   return newConfig;
 };
